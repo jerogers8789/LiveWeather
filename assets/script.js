@@ -1,7 +1,9 @@
-var citySearch = $('#city')
+var citySearch = $('#city').val()
 
 function searchCity() {
 fetch('https://api.openweathermap.org/data/2.5/weather?q'+ citySearch + '&appid' + a97dec38647ca1a3f70e8d72776c1f18)
+    .then(response => response.json())
+    .then(data => console.log(data));
 };
   
 
