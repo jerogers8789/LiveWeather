@@ -1,4 +1,5 @@
-var citySearch = $('#city').attr('value');
+var cityName = $('#city')
+var citySearch = cityName.val()
 //var citySearch = 'San Antonio'
 function searchCity() {
 fetch('http://api.openweathermap.org/data/2.5/weather?q='+ citySearch + '&appid=' + 'a97dec38647ca1a3f70e8d72776c1f18')
@@ -7,4 +8,4 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q='+ citySearch + '&appid=
 };
   
 
-$('#search').click(function (){console.log(citySearch)})
+$('#search').click(function (){console.log('')})
