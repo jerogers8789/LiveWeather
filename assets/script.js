@@ -18,13 +18,13 @@ function weatherTrack (cityName)  {
   var key = 'a97dec38647ca1a3f70e8d72776c1f18';
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)  
   .then( response => { return response.json() }) 
-  .then((data => pullWeather(data)))
+  .then((data => console.log(data)))
   function pullWeather( q ) {
     var fahrenheit = Math.round(((parseFloat(q.main.temp)-273.15)*1.8)+32); 
       
     $('#description').innerHTML = q.weather[0].description;
     $('#temp').innerHTML = fahrenheit + '&deg;';
-    $('#location').innerHTML = q.name;
+    $('#location').innerHTML = q.cityName;
   }
 }
 // function pullWeather( q ) {
@@ -35,7 +35,7 @@ function weatherTrack (cityName)  {
 //   $('#location').innerHTML = q.name;
 // }
 window.onload = function() {
-  weatherTrack( cityName );
+  console.log(weatherTrack( cityName ));
 }
 
 // function drawWeather( q ) {
