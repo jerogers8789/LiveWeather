@@ -13,40 +13,29 @@
 
 
 
-//$('#search').on('click',function(){console.log(this button clicked)})
+var cityName = 'San Antonio'
 function weatherTrack (cityName)  {
   var key = 'a97dec38647ca1a3f70e8d72776c1f18';
-  //var citySearch = $('#city').val()
-  var cityName = 'San Antonio'
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)  
-  .then(function(resp) { return resp.json() }) // Convert data to json
-  .then(function(data) {
-    pullWeather(data);
-  })
-  .catch(function() {
-    // catch any errors
-  });
+  .then( response => { return response.json() }) 
+  .then((data => pullWeather(data)))
   function pullWeather( q ) {
-	var celcius = Math.round(parseFloat(q.main.temp)-273.15);
-	var fahrenheit = Math.round(((parseFloat(q.main.temp)-273.15)*1.8)+32); 
-	
-	$('#description').innerHTML = q.weather[0].description;
-	$('#temp').innerHTML = celcius + '&deg;';
+    var fahrenheit = Math.round(((parseFloat(q.main.temp)-273.15)*1.8)+32); 
+      
+    $('#description').innerHTML = q.weather[0].description;
+    $('#temp').innerHTML = fahrenheit + '&deg;';
     $('#location').innerHTML = q.name;
+  }
+}
+// function pullWeather( q ) {
+//   var fahrenheit = Math.round(((parseFloat(q.main.temp)-273.15)*1.8)+32); 
     
-    if( description.indexOf('rain') > 0 ) {
-        document.body.className = 'rainy';
-    } else if( description.indexOf('cloud') > 0 ) {
-        document.body.className = 'cloudy';
-    } else if( description.indexOf('sunny') > 0 ) {
-        document.body.className = 'sunny';
-    }
-}}
-
-
-
+//   $('#description').innerHTML = q.weather[0].description;
+//   $('#temp').innerHTML = fahrenheit + '&deg;';
+//   $('#location').innerHTML = q.name;
+// }
 window.onload = function() {
-  weatherTrack( 'San Antonio' );
+  weatherTrack( cityName );
 }
 
 // function drawWeather( q ) {
